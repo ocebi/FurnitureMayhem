@@ -1508,6 +1508,21 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
       value: -1.13
       objectReference: {fileID: 0}
+    - target: {fileID: 4275793813340806081, guid: 8cfa6802e80ab425bb8afed195809164,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275793813340806081, guid: 8cfa6802e80ab425bb8afed195809164,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275793813340806081, guid: 8cfa6802e80ab425bb8afed195809164,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5776446792000891371, guid: 8cfa6802e80ab425bb8afed195809164,
         type: 3}
       propertyPath: m_LocalPosition.x
