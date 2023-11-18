@@ -55,8 +55,8 @@ public class BotWanderState : State
     private void SearchWalkPoint()
     {
         //calculate random point in range
-        float randomZ = UnityEngine.Random.Range(-bot.AttackRange, bot.AttackRange);
-        float randomX = UnityEngine.Random.Range(-bot.AttackRange, bot.AttackRange);
+        float randomZ = UnityEngine.Random.Range(-bot.SightRange, bot.SightRange);
+        float randomX = UnityEngine.Random.Range(-bot.SightRange, bot.SightRange);
         destination = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         if (bot.AIMover.IsValidLocation(destination.Value))
         {

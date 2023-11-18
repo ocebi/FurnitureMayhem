@@ -21,8 +21,12 @@ public class BotIdleState : State
         //Check sensors
         chaseTarget = null;
         chaseTarget = bot.AISensor.IsObjectInRange(bot.SightRange, bot.TargetMask);
-
-        if (chaseTarget != null && bot.AIMover.IsValidLocation(chaseTarget.transform.position) && bot.CanAttack)
+        int wanderRandom = UnityEngine.Random.Range(0, 10);
+        if (wanderRandom < 5)
+        {
+            StateMachine.SetNewState(nameof(BotWanderState));
+        }
+        else if (chaseTarget != null && bot.AIMover.IsValidLocation(chaseTarget.transform.position) && bot.CanAttack)
         {
             StateMachine.SetNewState(nameof(BotPursueState));
         }

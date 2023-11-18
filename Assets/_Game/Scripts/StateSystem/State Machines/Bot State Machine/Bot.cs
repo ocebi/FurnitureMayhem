@@ -74,7 +74,7 @@ namespace AISystem
         public override void ReleaseMove()
         {
             // InputController?.SetMoveInput(Vector2.zero);
-            InputController.SetMoveInput(Vector2.zero);
+            InputController?.SetMoveInput(Vector2.zero);
         }
 
         private Vector2 CalculateInputDirection(Vector3 position) //position to input conversion logic
