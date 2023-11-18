@@ -41,18 +41,11 @@ public class ReplenishableUI : MonoBehaviour
     private void OnEnable()
     {
         m_Replenishable.OnValueChanged += onHealthChanged;
-        m_AgentController.OnHacked += OnHacked;
     }
 
     private void OnDisable()
     {
         m_Replenishable.OnValueChanged -= onHealthChanged;
-        m_AgentController.OnHacked -= OnHacked;
-    }
-
-    private void OnHacked()
-    {
-        // m_BarFront.color = Color.green;
     }
 
     public void SetBackgroundColor(Color color)

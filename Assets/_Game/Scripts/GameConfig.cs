@@ -10,6 +10,7 @@ public class GameConfig : SingletonScriptableObject<GameConfig>
     public float SoulTransitionFollowSpeed = 10;
     public List<GameObject> RobotPrefabs = new List<GameObject>();
     public CollectableDataDict CollectableDataDict = new CollectableDataDict();
+    public int TargetHackAmount = 10;
 }
 
 [Serializable]
@@ -18,6 +19,5 @@ public class CollectableDataDict : ExtensionMethods.UnitySerializedDictionary<eC
 [Serializable]
 public class CollectableData
 {
-    public int TargetAmount;
     public Sprite Sprite;
 }

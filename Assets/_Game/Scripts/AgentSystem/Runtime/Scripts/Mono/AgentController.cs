@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(AgentInputController))]
 public class AgentController : MonoBehaviour
 {
-    public Action OnHacked;
+    public static Action OnHacked;
     public Action OnControlTaken;
     public bool HasSoul => m_HasSoul;
     public bool IsHacked => m_HasSoul || m_IsHacked;
@@ -36,6 +36,8 @@ public class AgentController : MonoBehaviour
     private ReplenishableUI m_ReplenishableUI;
     [SerializeField, ReadOnly] 
     private Bot m_Bot;
+    [SerializeField, ReadOnly] 
+    private Health m_Health;
 
     [ReadOnly] 
     public Transform VisualTransform;
@@ -53,6 +55,7 @@ public class AgentController : MonoBehaviour
         m_AnimatorController = GetComponent<AnimatorController>();
         m_ReplenishableUI = GetComponentInChildren<ReplenishableUI>();
         m_Bot = GetComponent<Bot>();
+        m_Health = GetComponent<Health>();
     }
 
     private void OnValidate()
@@ -67,10 +70,14 @@ public class AgentController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameStateManager.Instance.StateMachine.OnStateChanged += onStateChanged;
+        if (!GameStateManager.IsInstanceNull)
+            GameStateManager.Instance.StateMachine.OnStateChanged += onStateChanged;
         m_AgentInputController.OnMovementUp += OnMovementUp;
         m_AgentInputController.OnAttack += Attack;
         m_Collector.OnCollectTargetReached += OnCollectTargetReached;
+        m_Health.OnValueChanged += OnHealthChanged;
+        m_Health.OnValueBelowZero += OnHealthBelowZero;
+        GameStateManager.OnGameFinished += OnGameFinished;
     }
 
     private void OnDisable()
@@ -78,12 +85,24 @@ public class AgentController : MonoBehaviour
         m_AgentInputController.OnMovementUp -= OnMovementUp;
         m_AgentInputController.OnAttack -= Attack;
         m_Collector.OnCollectTargetReached -= OnCollectTargetReached;
-        if (GameStateManager.Instance)
+        m_Health.OnValueChanged -= OnHealthChanged;
+        m_Health.OnValueBelowZero -= OnHealthBelowZero;
+        GameStateManager.OnGameFinished -= OnGameFinished;
+        if (!GameStateManager.IsInstanceNull)
             GameStateManager.Instance.StateMachine.OnStateChanged -= onStateChanged;
     }
 
+    private void OnGameFinished()
+    {
+        if (HasSoul)
+            m_Health.IsInvulnerable = true;
+    }
+
     private void FixedUpdate()
-    {        
+    {
+        if (GameStateManager.Instance.IsGameFinished)
+            return;
+        
         if (m_AgentInputController.MovementInput != Vector3.zero)
         {
             m_AgentMovement.MoveCharacter(m_AgentInputController.MovementInput);
@@ -143,7 +162,8 @@ public class AgentController : MonoBehaviour
 
     private void Attack()
     {
-        if (!m_AttackController.IsCooldownFinished)
+        if (!m_AttackController.IsCooldownFinished ||
+            GameStateManager.Instance.IsGameFinished)
             return;
         
         Ray ray = CameraManager.Instance.Camera.ScreenPointToRay(Input.mousePosition);
@@ -165,5 +185,15 @@ public class AgentController : MonoBehaviour
     private void EnableRotate()
     {
         m_AgentRotate.ToggleRotate(true);
+    }
+    
+    private void OnHealthChanged()
+    {
+        
+    }
+
+    private void OnHealthBelowZero()
+    {
+        Destroy(gameObject);
     }
 }
