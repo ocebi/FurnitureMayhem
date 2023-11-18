@@ -14,7 +14,6 @@ public class PostProcessManager : Singleton<PostProcessManager>
         base.OnAwakeEvent();
         if (m_Volume.profile.TryGet(out m_Beautify))
         {
-            Debug.LogError("Beautify profile set");
         }
     }
 
