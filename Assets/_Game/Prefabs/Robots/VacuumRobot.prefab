@@ -15,6 +15,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350312190281468980, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
+      propertyPath: m_Damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350312190281468980, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
       propertyPath: m_Cooldown
       value: 0.5
       objectReference: {fileID: 0}
@@ -72,6 +77,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Replenishable
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920495043134302811, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_CollectType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

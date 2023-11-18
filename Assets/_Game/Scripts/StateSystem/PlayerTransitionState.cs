@@ -13,7 +13,7 @@ public class PlayerTransitionState : State
         var cam = CameraManager.Instance.Camera;
         var ray = cam.ScreenPointToRay(Input.mousePosition);
         // Debug.DrawRay(ray.origin, (ray.direction) * 50f, Color.red, 5f);
-        if (Physics.Raycast(ray, out hitInfo) && 
+        if (Physics.Raycast(ray, out hitInfo, 100f, LayerMask.GetMask("Agent")) && 
             hitInfo.transform.TryGetComponent<AgentController>(out var agentController))
         {
             PlayerManager.Instance.SetPlayerTarget(agentController);

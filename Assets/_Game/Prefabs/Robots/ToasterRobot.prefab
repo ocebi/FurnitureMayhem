@@ -162,6 +162,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_CurrentValue
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_InitialValue
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 5459277644340692210, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: rmsCount

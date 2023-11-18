@@ -24,11 +24,6 @@ namespace AISystem
             m_AttackController = GetComponent<AttackController>();
         }
 
-        private void Start()
-        {
-            Initialize();
-        }
-
         [Button("Initialize AI")]
         public override void Initialize()
         {
@@ -57,8 +52,7 @@ namespace AISystem
         {
             if (i_AttackTarget.TryGetComponent<Health>(out var health))
             {
-                //TODO: Commented out
-                m_AttackController.Attack(i_AttackTarget.position - transform.position);
+                m_AttackController.Attack((i_AttackTarget.position - transform.position).normalized);
                 Debug.LogError("Attack");
             }
             else
@@ -69,7 +63,8 @@ namespace AISystem
 
         public override void MoveToPosition(Vector3 position)
         {
-            InputController?.SetMoveInput(CalculateInputDirection(position));
+            // InputController?.SetMoveInput(CalculateInputDirection(position));
+            InputController?.SetMoveInput(position);
         }
 
         public override void ReleaseMove()

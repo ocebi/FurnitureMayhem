@@ -13,6 +13,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WasherRobot Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3350312190281468980, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_Damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350312190281468980, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_Cooldown
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4321810874827331584, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,6 +73,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_CurrentValue
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_InitialValue
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5459277644340692210, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: rmsCount
@@ -77,6 +102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rmsCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920495043134302811, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_CollectType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
