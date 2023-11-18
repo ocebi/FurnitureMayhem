@@ -61,7 +61,6 @@ namespace AISystem
             if (i_AttackTarget.TryGetComponent<Health>(out var health))
             {
                 m_AttackController.Attack((i_AttackTarget.position - transform.position).normalized);
-                Debug.LogError("Attack");
             }
             else
             {

@@ -19,7 +19,6 @@ public class AgentPhysicController
     {
         if (rb == null) return;
 
-        Debug.Log("Inside set rb");
         rb.mass = 2; //4
         rb.drag = 10; //5
         rb.angularDrag = 20f; //5

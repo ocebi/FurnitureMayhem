@@ -10,7 +10,6 @@ public class InputManager : Singleton<InputManager>
     public static Action OnMovementDown;
     public static Action<Vector2> OnMovement;
     public static Action OnMovementUp;
-    public static Action OnJump;
     public static Action OnSpecialVisionKeyDown;
     public static Action OnSpecialVisionKeyUp;
     public static Action OnAttack;
@@ -41,12 +40,10 @@ public class InputManager : Singleton<InputManager>
             OnMovement.InvokeSafe(m_MovementInput);
             // Debug.Log($"Movement: {m_MovementInput}");
         }
-        if (Input.GetKeyDown(KeyCode.R))
-            OnSpecialVisionKeyDown.InvokeSafe();
-        else if (Input.GetKeyUp(KeyCode.R))
-            OnSpecialVisionKeyUp.InvokeSafe();
         if (Input.GetKeyDown(KeyCode.Space))
-            OnJump.InvokeSafe();
+            OnSpecialVisionKeyDown.InvokeSafe();
+        else if (Input.GetKeyUp(KeyCode.Space))
+            OnSpecialVisionKeyUp.InvokeSafe();
         if (Input.GetMouseButtonDown(0))
             OnAttack.InvokeSafe();
     }

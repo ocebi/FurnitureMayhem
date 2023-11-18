@@ -6,11 +6,9 @@ using UnityEngine;
 public class AgentInputController : MonoBehaviour
 {
     #region Input Actions
-    
     public Action OnMovementDown;
     public Action<Vector2> OnMovement;
     public Action OnMovementUp;
-    public Action OnJump;
     public Action OnAttack;
     #endregion
 
@@ -79,14 +77,6 @@ public class AgentInputController : MonoBehaviour
         else
             Debug.LogError("Move should only be used by AI", gameObject);
     }
-    
-    public void SetJumpInput()
-    {
-        if (!m_UsePlayerInput)
-            setJumpInput();
-        else
-            Debug.LogError("Jump should only be used by AI");
-    }
 
     public void SetAttackInput()
     {
@@ -107,11 +97,6 @@ public class AgentInputController : MonoBehaviour
         OnMovement.InvokeSafe(i_Movement);
         m_MovementInput = i_Movement.normalized;
     }
-
-    private void setJumpInput()
-    {
-        OnJump.InvokeSafe();
-    }
     
     private void setAttackInput()
     {
@@ -123,7 +108,6 @@ public class AgentInputController : MonoBehaviour
         if (!m_UsePlayerInput)
         {
             // InputManager.OnMovement += move;
-            InputManager.OnJump += setJumpInput;
             InputManager.OnAttack += setAttackInput;
             m_UsePlayerInput = true;
         }
@@ -134,7 +118,6 @@ public class AgentInputController : MonoBehaviour
         if (m_UsePlayerInput)
         {
             // InputManager.OnMovement -= move;
-            InputManager.OnJump -= setJumpInput;
             InputManager.OnAttack -= setAttackInput;
             m_MovementInput = Vector3.zero;
             m_UsePlayerInput = false;
