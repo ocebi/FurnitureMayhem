@@ -46,7 +46,6 @@ public class GameStateManager : Singleton<GameStateManager>
 
     private void onStateChanged(string i_State)
     {
-        Debug.LogError($"OnStateChanged: {i_State}");
     }
     
     private void onSpecialVisionKeyDown()

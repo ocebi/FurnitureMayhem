@@ -137,7 +137,6 @@ public class HighlightController : MonoBehaviour
 
     public void SetTransitionHighlight()
     {
-        Debug.Log("transition");
         m_IsTransitionActive = true;
     }
 

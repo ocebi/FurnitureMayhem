@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Speed: 5
   m_AgentInputController: {fileID: 4376503910882797649}
   m_AttackController: {fileID: 3350312190281468980}
+  m_AnimatorController: {fileID: 5174491427803820211}
   m_HighlightController: {fileID: 4276381438426739565}
   m_AgentMovement: {fileID: 6585807341995688895}
   m_AgentRotate: {fileID: 4078269814025106857}
