@@ -143,6 +143,12 @@ PrefabInstance:
       propertyPath: m_AttackType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3520786676332822508, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: deathParticlePrefab
+      value: 
+      objectReference: {fileID: 7612327112066645472, guid: 5bfe89e35d79b429cbd9bb2d17b386e6,
+        type: 3}
     - target: {fileID: 4321810874827331584, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,10 +244,20 @@ PrefabInstance:
       propertyPath: m_Replenishable
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8079024815260966539, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_AgentController
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8171086830452727586, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: rmsCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920495043134302811, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_AgentController
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
