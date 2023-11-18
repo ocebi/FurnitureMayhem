@@ -15,6 +15,11 @@ public class Collector : MonoBehaviour
     [SerializeField, ReadOnly]
     private AgentController m_AgentController;
 
+    private void Awake()
+    {
+        SetRefs();
+    }
+
     [Button]
     private void SetRefs()
     {

@@ -13,6 +13,8 @@ public class HighlightController : MonoBehaviour
     private HighlightEffect m_SoulTargetHighlight;
     [SerializeField]
     private HighlightEffect m_SelectedHighlight;
+    [SerializeField]
+    private HighlightEffect m_HackedHighlight;
     [SerializeField, ReadOnly] 
     private AgentController m_AgentController;
     // [SerializeField, ReadOnly] 
@@ -75,7 +77,8 @@ public class HighlightController : MonoBehaviour
     public void SetSoulTargetHighlight()
     {
         m_SelectedHighlight.SetHighlighted(false);
-        m_SoulTargetHighlight.SetHighlighted(true);    
+        if (!m_HackedHighlight.highlighted)
+            m_SoulTargetHighlight.SetHighlighted(true);    
         m_IsHighlightActive = false;
     }
 
@@ -87,6 +90,11 @@ public class HighlightController : MonoBehaviour
         m_IsHighlightActive = true;
     }
 
+    public void SetHackedHighlight()
+    {
+        m_HackedHighlight.SetHighlighted(true);
+    }
+
     [Button]
     public void DisableAllHighlight()
     {
@@ -94,7 +102,6 @@ public class HighlightController : MonoBehaviour
         m_SelectedHighlight.SetHighlighted(false);
         m_IsHighlightActive = false;
         m_IsTransitionActive = false;
-
     }
 
     public void SetTrajectory(Transform m_TargetTransform)

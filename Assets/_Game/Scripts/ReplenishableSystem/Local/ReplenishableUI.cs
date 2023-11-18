@@ -1,19 +1,26 @@
 ﻿using MoreMountains.Tools;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReplenishableUI : MonoBehaviour
 {
+    [SerializeField, ReadOnly] 
+    private AgentController m_AgentController;
     [SerializeField, ReadOnly]
     private Replenishable m_Replenishable;
     [SerializeField, ReadOnly]
     private MMProgressBar m_ProgressBar;
+    [SerializeField, ReadOnly] 
+    private Image m_BarFront;
     
     [Button]
     private void setRefs()
     {
         m_Replenishable = GetComponentInParent<Health>();
         m_ProgressBar = GetComponentInChildren<MMProgressBar>();
+        m_BarFront = transform.FindDeepChild<Image>("BarFront");
+        m_AgentController = GetComponentInParent<AgentController>();
     }
 
     private void OnValidate()
@@ -30,15 +37,24 @@ public class ReplenishableUI : MonoBehaviour
     private void OnEnable()
     {
         m_Replenishable.OnValueChanged += onHealthChanged;
+        m_AgentController.OnHacked += OnHacked;
     }
 
     private void OnDisable()
     {
         m_Replenishable.OnValueChanged -= onHealthChanged;
+        m_AgentController.OnHacked -= OnHacked;
+    }
+
+    private void OnHacked()
+    {
+        m_BarFront.color = Color.red;
     }
 
     private void onHealthChanged()
     {
         m_ProgressBar.UpdateBar(m_Replenishable.CurrentValue, 0, m_Replenishable.MaxValue);
     }
+    
+    
 }
