@@ -194,6 +194,8 @@ MonoBehaviour:
   m_AgentMovement: {fileID: 6585807341995688895}
   m_AgentRotate: {fileID: 4078269814025106857}
   m_Collector: {fileID: 8920495043134302811}
+  m_ReplenishableUI: {fileID: 8079024815260966539}
+  m_Bot: {fileID: 6866213947906148498}
   VisualTransform: {fileID: 9053405425316076160}
 --- !u!114 &6585807341995688895
 MonoBehaviour:
@@ -453,7 +455,7 @@ MonoBehaviour:
   overlayTextureScale: 1
   overlayVisibility: 0
   outline: 1
-  outlineColor: {r: 1, g: 0, b: 0, a: 0.6156863}
+  outlineColor: {r: 0, g: 1, b: 0, a: 0.6156863}
   outlineColorStyle: 0
   outlineGradient:
     serializedVersion: 2
@@ -513,16 +515,16 @@ MonoBehaviour:
   glowPasses:
   - offset: 4
     alpha: 0.1
-    color: {r: 0.7264151, g: 0.08261192, b: 0, a: 1}
+    color: {r: 0, g: 1, b: 0, a: 1}
   - offset: 3
     alpha: 0.2
-    color: {r: 0.7294118, g: 0.08627451, b: 0, a: 1}
+    color: {r: 0, g: 1, b: 0, a: 1}
   - offset: 2
     alpha: 0.3
-    color: {r: 0.7294118, g: 0.08627451, b: 0, a: 1}
+    color: {r: 0, g: 1, b: 0, a: 1}
   - offset: 1
     alpha: 0.4
-    color: {r: 0.7294118, g: 0.08627451, b: 0, a: 1}
+    color: {r: 0, g: 1, b: 0, a: 1}
   glowIgnoreMask: 0
   innerGlow: 0
   innerGlowWidth: 1
@@ -1316,17 +1318,17 @@ PrefabInstance:
     - target: {fileID: 2203340171856394327, guid: 98bdf8422be5543f882a49932a171519,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.020439148
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2203340171856394327, guid: 98bdf8422be5543f882a49932a171519,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.108383924
       objectReference: {fileID: 0}
     - target: {fileID: 2203340171856394327, guid: 98bdf8422be5543f882a49932a171519,
         type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2878508024072068419, guid: 98bdf8422be5543f882a49932a171519,
         type: 3}

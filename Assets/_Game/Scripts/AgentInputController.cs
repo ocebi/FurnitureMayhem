@@ -74,8 +74,8 @@ public class AgentInputController : MonoBehaviour
         {
             setMoveInput(i_Movement);
         }
-        else
-            Debug.LogError("Move should only be used by AI", gameObject);
+        // else
+        //     Debug.LogError("Move should only be used by AI", gameObject);
     }
 
     public void SetAttackInput()
