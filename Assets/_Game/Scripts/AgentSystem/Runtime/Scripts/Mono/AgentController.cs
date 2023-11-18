@@ -38,7 +38,8 @@ public class AgentController : MonoBehaviour
     private Bot m_Bot;
     [SerializeField, ReadOnly] 
     private Health m_Health;
-
+    [SerializeField, ReadOnly] 
+    private PunchScaleFeedback m_PunchScaleFeedback;
     [ReadOnly] 
     public Transform VisualTransform;
 
@@ -56,6 +57,7 @@ public class AgentController : MonoBehaviour
         m_ReplenishableUI = GetComponentInChildren<ReplenishableUI>();
         m_Bot = GetComponent<Bot>();
         m_Health = GetComponent<Health>();
+        m_PunchScaleFeedback = GetComponent<PunchScaleFeedback>();
     }
 
     private void OnValidate()
@@ -189,7 +191,7 @@ public class AgentController : MonoBehaviour
     
     private void OnHealthChanged()
     {
-        
+        m_PunchScaleFeedback.Play();
     }
 
     private void OnHealthBelowZero()

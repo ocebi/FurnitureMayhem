@@ -40,7 +40,7 @@ public class InputManager : Singleton<InputManager>
             OnMovement.InvokeSafe(m_MovementInput);
             // Debug.Log($"Movement: {m_MovementInput}");
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !GameStateManager.Instance.IsGameFinished)
             OnSpecialVisionKeyDown.InvokeSafe();
         else if (Input.GetKeyUp(KeyCode.Space))
             OnSpecialVisionKeyUp.InvokeSafe();
