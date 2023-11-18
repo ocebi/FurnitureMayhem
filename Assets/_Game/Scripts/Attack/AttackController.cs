@@ -11,6 +11,8 @@ public class AttackController : MonoBehaviour
     private eAttackType m_AttackType;
     [SerializeField] 
     private float m_Cooldown;
+    [SerializeField] 
+    private int m_Damage = 10;
     private float m_LastAttackTime;
 
     [SerializeField, ReadOnly]
@@ -35,7 +37,7 @@ public class AttackController : MonoBehaviour
             return;
         if (m_AttackType == eAttackType.Melee)
         {
-            var colliders = Physics.OverlapBox(transform.position + direction, Vector3.one, Quaternion.identity, LayerMask.GetMask("Agent"));
+            var colliders = Physics.OverlapBox(transform.position + direction, Vector3.one * 2, Quaternion.identity, LayerMask.GetMask("Agent"));
             AgentController chosenAgent = null;
             if (colliders.Length == 0)
                 return;
@@ -43,7 +45,7 @@ public class AttackController : MonoBehaviour
             {
                 if (colliders[i].TryGetComponent<AgentController>(out var agentController) && 
                     agentController != m_AgentController &&  
-                    !agentController.IsHacked)
+                    agentController.IsHacked != m_AgentController.IsHacked)
                 {
                     chosenAgent = agentController;
                     break;
@@ -52,8 +54,7 @@ public class AttackController : MonoBehaviour
 
             if (chosenAgent && chosenAgent.TryGetComponent<Health>(out var health))
             {
-                health.DecreaseValue(10);
-                Debug.LogError("Damaged");
+                health.DecreaseValue(m_Damage);
             }
             //TODO: Play attack animation
         }
@@ -68,6 +69,7 @@ public class AttackController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.forward * 2f, Vector3.one);
     }
 }

@@ -67,7 +67,6 @@ public class AgentController : MonoBehaviour
 
     private void FixedUpdate()
     {        
-        // Put the logic here ...
         if (m_AgentInputController.MovementInput != Vector3.zero)
         {
             m_AgentMovement.MoveCharacter(m_AgentInputController.MovementInput);
@@ -102,7 +101,7 @@ public class AgentController : MonoBehaviour
     {
         if (i_State == nameof(SpecialVisionState))
             m_HighlightController.SetSoulTargetHighlight();
-        else if (i_State == nameof(PlayerTransitionState) || i_State == nameof(GameplayState)) //TODO: Scary
+        else if (i_State == nameof(PlayerTransitionState) || i_State == nameof(GameplayState))
             m_HighlightController.DisableAllHighlight();
     }
 
@@ -120,22 +119,10 @@ public class AgentController : MonoBehaviour
             var lookPos = hit.point;
             lookPos.y = transform.position.y;
             transform.LookAt(lookPos, Vector3.up);
-            // m_AgentRotate.Rotate(CameraRelativeDirection.AlignToCamera(clickPosition));
             var attackDirection = (lookPos - transform.position).normalized;
             m_AttackController.Attack(attackDirection);
-            Invoke(nameof(EnableRotate), 1f);
+            Invoke(nameof(EnableRotate), 0.5f);
         }
-        // var lookAtPos = Input.mousePosition;
-        // lookAtPos.z = transform.position.z - CameraManager.Instance.Camera.transform.position.z;
-        // // clickPosition.y = transform.position.y;
-        // var clickPosition = CameraManager.Instance.Camera.ScreenToWorldPoint(lookAtPos);
-        // var lookTarget = clickPosition;
-        // // var lookTarget = CameraRelativeDirection.AlignToCamera(clickPosition);
-        // lookTarget.y = transform.position.y;
-        // transform.LookAt(lookTarget, Vector3.up);
-        // // m_AgentRotate.Rotate(CameraRelativeDirection.AlignToCamera(clickPosition));
-        // var attackDirection = (clickPosition - transform.position).normalized;
-        // m_AttackController.Attack(transform.position + attackDirection);
     }
 
     private void EnableRotate()

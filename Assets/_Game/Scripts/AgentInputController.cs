@@ -69,7 +69,7 @@ public class AgentInputController : MonoBehaviour
         if (!m_UsePlayerInput)
             setMoveInput(i_Movement);
         else
-            Debug.LogError("Move should only be used by AI");
+            Debug.LogError("Move should only be used by AI", gameObject);
     }
     
     public void SetJumpInput()
