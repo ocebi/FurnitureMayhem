@@ -9,10 +9,12 @@ namespace AISystem
     {
         // protected Team agentTeam;
         int walkableMask;
+        private AgentController m_AgentController;
         protected virtual void Awake()
         {
             // agentTeam = GetComponent<Team>();
             walkableMask = 1 << NavMesh.GetAreaFromName("Walkable");
+            m_AgentController = GetComponent<AgentController>();
         }
 
         public virtual Transform IsObjectInRange(float range, LayerMask lm)
@@ -60,7 +62,7 @@ namespace AISystem
 
         protected virtual bool ConditionsMatch(GameObject targetObject)
         {
-            return true;
+            return (m_AgentController.IsHacked != targetObject.GetComponent<AgentController>().IsHacked);
         }
 
         public bool ClosestPointExists(Vector3 destination, float distance)

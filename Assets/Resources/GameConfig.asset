@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RegularFollowSpeed: 100
   SoulTransitionFollowSpeed: 20
+  RobotPrefabs:
+  - {fileID: 5099031661864684029, guid: fd48dd471cb214774ad4e1b73abbc4a2, type: 3}
+  - {fileID: 933701044796075186, guid: 28c18432a8adc472fb0a50d6f8889c06, type: 3}
+  - {fileID: 2025148656144016295, guid: a6e3d9d5a88fb4100afaf019982067f9, type: 3}
