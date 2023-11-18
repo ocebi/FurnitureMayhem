@@ -17,6 +17,8 @@ namespace AISystem
         [SerializeField, ReadOnly]
         private AttackController m_AttackController;
 
+        public bool CanAttack => m_AttackController.IsCooldownFinished;
+
         [Button]
         private void setRefs()
         {
@@ -63,13 +65,16 @@ namespace AISystem
 
         public override void MoveToPosition(Vector3 position)
         {
-            // InputController?.SetMoveInput(CalculateInputDirection(position));
-            InputController?.SetMoveInput(position);
+            InputController?.SetMoveInput(CalculateInputDirection(position));
+            // InputController?.SetMoveInput(position);
+            // InputController.SetMoveInput(position);
+
         }
 
         public override void ReleaseMove()
         {
-            InputController?.SetMoveInput(Vector2.zero);
+            // InputController?.SetMoveInput(Vector2.zero);
+            InputController.SetMoveInput(Vector2.zero);
         }
 
         private Vector2 CalculateInputDirection(Vector3 position) //position to input conversion logic
