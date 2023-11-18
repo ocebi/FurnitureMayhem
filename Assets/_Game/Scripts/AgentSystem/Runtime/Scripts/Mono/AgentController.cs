@@ -1,5 +1,6 @@
 using System;
 using AgentSystem;
+using AISystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -30,6 +31,10 @@ public class AgentController : MonoBehaviour
     [SerializeField, ReadOnly] 
     private Collector m_Collector;
     private AgentPhysicController m_AgentPhysicsController;
+    [SerializeField, ReadOnly] 
+    private ReplenishableUI m_ReplenishableUI;
+    [SerializeField, ReadOnly] 
+    private Bot m_Bot;
 
     [ReadOnly] 
     public Transform VisualTransform;
@@ -45,6 +50,8 @@ public class AgentController : MonoBehaviour
         m_AttackController = GetComponent<AttackController>();
         m_Collector = GetComponentInChildren<Collector>();
         m_AnimatorController = GetComponent<AnimatorController>();
+        m_ReplenishableUI = GetComponentInChildren<ReplenishableUI>();
+        m_Bot = GetComponent<Bot>();
     }
 
     private void OnValidate()
@@ -97,7 +104,19 @@ public class AgentController : MonoBehaviour
     {
         m_AgentInputController.SetInputAuthority(i_Value);
         if (!i_Value)
+        {
+            m_Bot.Initialize();
             m_AgentInputController.SetMoveInput(Vector2.zero);
+            if (m_IsHacked)
+                m_ReplenishableUI.SetBackgroundColor(Color.green);
+            else
+                m_ReplenishableUI.SetBackgroundColor(Color.red);
+        }
+        else
+        {
+            m_Bot.ResetAI();
+            m_ReplenishableUI.SetBackgroundColor(Color.yellow);
+        }
         m_HasSoul = i_Value;
     }
 

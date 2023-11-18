@@ -17,8 +17,6 @@ public class HighlightController : MonoBehaviour
     private HighlightEffect m_HackedHighlight;
     [SerializeField, ReadOnly] 
     private AgentController m_AgentController;
-    // [SerializeField, ReadOnly] 
-    // private LineRenderer m_LineRenderer;
     [SerializeField]
     private VisualEffect m_VisualEffect;
     [SerializeField, ReadOnly]

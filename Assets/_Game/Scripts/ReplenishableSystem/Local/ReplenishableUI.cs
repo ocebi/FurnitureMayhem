@@ -13,6 +13,8 @@ public class ReplenishableUI : MonoBehaviour
     private MMProgressBar m_ProgressBar;
     [SerializeField, ReadOnly] 
     private Image m_BarFront;
+    [SerializeField, ReadOnly] 
+    private Image m_DelayedBarDecreasing;
     
     [Button]
     private void setRefs()
@@ -20,6 +22,7 @@ public class ReplenishableUI : MonoBehaviour
         m_Replenishable = GetComponentInParent<Health>();
         m_ProgressBar = GetComponentInChildren<MMProgressBar>();
         m_BarFront = transform.FindDeepChild<Image>("BarFront");
+        m_DelayedBarDecreasing = transform.FindDeepChild<Image>("DelayedBarDecreasing");
         m_AgentController = GetComponentInParent<AgentController>();
     }
 
@@ -31,6 +34,7 @@ public class ReplenishableUI : MonoBehaviour
     private void Awake()
     {
         setRefs();
+        m_ProgressBar.TimeScale = MMProgressBar.TimeScales.UnscaledTime;
         m_ProgressBar.SetBar(m_Replenishable.MaxValue, 0, m_Replenishable.MaxValue);
     }
 
@@ -48,7 +52,13 @@ public class ReplenishableUI : MonoBehaviour
 
     private void OnHacked()
     {
-        m_BarFront.color = Color.red;
+        // m_BarFront.color = Color.green;
+    }
+
+    public void SetBackgroundColor(Color color)
+    {
+        m_DelayedBarDecreasing.color = color;
+        m_BarFront.color = color;
     }
 
     private void onHealthChanged()

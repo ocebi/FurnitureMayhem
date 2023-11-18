@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5174491427803820211, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1333961440580974760}
     - target: {fileID: 5320090538615944420, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: m_MaxValue
@@ -208,10 +213,25 @@ PrefabInstance:
       propertyPath: m_InitialValue
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 5341255721768312440, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: rmsCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5459277644340692210, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: rmsCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866213947906148498, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: SightRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866213947906148498, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: AttackRange
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8079024815260966539, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
