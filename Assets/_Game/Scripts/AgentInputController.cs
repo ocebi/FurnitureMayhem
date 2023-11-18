@@ -37,9 +37,15 @@ public class AgentInputController : MonoBehaviour
 
     private void Update()
     {
-        var newMovement = cameraRelativeFlatten(InputManager.Instance.MovementInput, transform.up);
-        if (newMovement == Vector3.zero && m_MovementInput != Vector3.zero)
-            OnMovementUp.InvokeSafe();
+        if (!m_UsePlayerInput)
+            return;
+        
+        if (m_MovementInput != Vector3.zero)
+        {
+            var newMovement = cameraRelativeFlatten(InputManager.Instance.MovementInput, transform.up);
+            if (newMovement == Vector3.zero)
+                OnMovementUp.InvokeSafe();
+        }
         if (m_UsePlayerInput && InputManager.Instance.IsMovementInputDown)
         {
             m_MovementInput = cameraRelativeFlatten(InputManager.Instance.MovementInput, transform.up);
@@ -67,7 +73,10 @@ public class AgentInputController : MonoBehaviour
     public void SetMoveInput(Vector2 i_Movement)
     {
         if (!m_UsePlayerInput)
+        {
+            Debug.LogError($"Set move input: {i_Movement}");
             setMoveInput(i_Movement);
+        }
         else
             Debug.LogError("Move should only be used by AI", gameObject);
     }
@@ -97,6 +106,7 @@ public class AgentInputController : MonoBehaviour
         if (i_Movement == Vector2.zero && m_MovementInput != Vector3.zero)
             OnMovementUp.InvokeSafe();
         OnMovement.InvokeSafe(i_Movement);
+        m_MovementInput = i_Movement.normalized;
     }
 
     private void setJumpInput()

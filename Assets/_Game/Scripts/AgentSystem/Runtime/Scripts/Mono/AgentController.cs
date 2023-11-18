@@ -93,6 +93,8 @@ public class AgentController : MonoBehaviour
     public void SetLocalControl(bool i_Value)
     {
         m_AgentInputController.SetInputAuthority(i_Value);
+        if (!i_Value)
+            m_AgentInputController.SetMoveInput(Vector2.zero);
         m_HasSoul = i_Value;
         IsHacked = i_Value; //TODO: Shouldn't be set to false when jumping out of hacked character
     }

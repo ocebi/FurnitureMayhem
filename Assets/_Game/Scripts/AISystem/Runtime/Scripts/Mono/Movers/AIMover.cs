@@ -67,7 +67,6 @@ namespace AISystem
             {
                 return false;
             }
-
             return true;
         }
 

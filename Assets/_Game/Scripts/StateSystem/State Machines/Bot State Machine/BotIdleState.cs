@@ -22,7 +22,7 @@ public class BotIdleState : State
         chaseTarget = null;
         chaseTarget = bot.AISensor.IsObjectInRange(bot.SightRange, bot.TargetMask);
 
-        if (chaseTarget != null && bot.AIMover.IsValidLocation(chaseTarget.transform.position))
+        if (chaseTarget != null && bot.AIMover.IsValidLocation(chaseTarget.transform.position) && bot.CanAttack)
         {
             StateMachine.SetNewState(nameof(BotPursueState));
         }
