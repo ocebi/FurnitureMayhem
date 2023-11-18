@@ -21,11 +21,9 @@ MonoBehaviour:
   CollectableDataDict:
     keyData: 000000000100000002000000
     valueData:
-    - TargetAmount: 5
-      Sprite: {fileID: 21300002, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
-    - TargetAmount: 5
-      Sprite: {fileID: 2125737359283935466, guid: f7043b7291f49844b9671b3d3dedcbb5,
+    - Sprite: {fileID: 21300002, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+    - Sprite: {fileID: 2125737359283935466, guid: f7043b7291f49844b9671b3d3dedcbb5,
         type: 3}
-    - TargetAmount: 5
-      Sprite: {fileID: 5524590292671962877, guid: f7043b7291f49844b9671b3d3dedcbb5,
+    - Sprite: {fileID: 5524590292671962877, guid: f7043b7291f49844b9671b3d3dedcbb5,
         type: 3}
+  TargetHackAmount: 1
