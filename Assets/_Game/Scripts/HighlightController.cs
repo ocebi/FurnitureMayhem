@@ -122,15 +122,15 @@ public class HighlightController : MonoBehaviour
         {
             if (hit.transform.GetComponent<AgentController>() != null)
             {
-                m_VisualEffect.SetFloat("SpawnRate", 12);
+                m_VisualEffect.SetFloat("SpawnRate", 500);
                 m_VisualEffect.SetFloat("Lifetime", 1);
-                m_VisualEffect.SetFloat("Blend", 0.06f);
+                m_VisualEffect.SetFloat("Blend", 0.05f);
             }
             else
             {
-                m_VisualEffect.SetFloat("SpawnRate", 6);
+                m_VisualEffect.SetFloat("SpawnRate", 50);
                 m_VisualEffect.SetFloat("Lifetime", 2);
-                m_VisualEffect.SetFloat("Blend", 0.03f);
+                m_VisualEffect.SetFloat("Blend", 0.02f);
             }
         }
     }
