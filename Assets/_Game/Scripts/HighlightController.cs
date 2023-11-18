@@ -5,6 +5,7 @@ using HighlightPlus;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.VFX;
 
 public class HighlightController : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class HighlightController : MonoBehaviour
     private AgentController m_AgentController;
     // [SerializeField, ReadOnly] 
     // private LineRenderer m_LineRenderer;
-
+    [SerializeField]
+    private VisualEffect m_VisualEffect;
+    [SerializeField, ReadOnly]
     private bool m_IsHighlightActive;
 
     [Button]
@@ -41,12 +44,14 @@ public class HighlightController : MonoBehaviour
         else
         {
             // m_LineRenderer.gameObject.SetActive(false);
+            m_VisualEffect.gameObject.SetActive(false);
         }
     }
 
     private void Awake()
     {
         // m_LineRenderer.gameObject.SetActive(false);
+        m_VisualEffect.gameObject.SetActive(false); 
     }
 
     private void OnMouseEnter()
@@ -94,5 +99,9 @@ public class HighlightController : MonoBehaviour
         // m_LineRenderer.SetPosition(0, transform.position + Vector3.up * 0.5f);
         // m_LineRenderer.SetPosition(1, m_TargetTransform.position + Vector3.up * 0.5f);
         // m_LineRenderer.gameObject.SetActive(true);
+
+        m_VisualEffect.gameObject.SetActive(true);
+        m_VisualEffect.SetVector3("StartPos", m_TargetTransform.position + Vector3.up * 0.5f);
+        m_VisualEffect.SetVector3("TargetPos", transform.position + Vector3.up * 0.5f);
     }
 }
