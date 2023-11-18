@@ -8,6 +8,7 @@ using UnityEngine;
 public class AgentController : MonoBehaviour
 {
     public Action OnHacked;
+    public Action OnControlTaken;
     public bool HasSoul => m_HasSoul;
     public bool IsHacked => m_HasSoul || m_IsHacked;
     [SerializeField, ReadOnly]
@@ -116,6 +117,7 @@ public class AgentController : MonoBehaviour
         {
             m_Bot.ResetAI();
             m_ReplenishableUI.SetBackgroundColor(Color.yellow);
+            OnControlTaken.InvokeSafe();
         }
         m_HasSoul = i_Value;
     }

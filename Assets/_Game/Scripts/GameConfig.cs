@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,4 +9,15 @@ public class GameConfig : SingletonScriptableObject<GameConfig>
     public float RegularFollowSpeed = 100;
     public float SoulTransitionFollowSpeed = 10;
     public List<GameObject> RobotPrefabs = new List<GameObject>();
+    public CollectableDataDict CollectableDataDict = new CollectableDataDict();
+}
+
+[Serializable]
+public class CollectableDataDict : ExtensionMethods.UnitySerializedDictionary<eCollectable, CollectableData> { }
+
+[Serializable]
+public class CollectableData
+{
+    public int TargetAmount;
+    public Sprite Sprite;
 }
