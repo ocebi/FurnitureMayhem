@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using System;
 using Sirenix.OdinInspector;
 using StateSystem;
 using UnityEngine;
@@ -24,6 +25,11 @@ namespace AISystem
         {
             StateMachine = transform.FindDeepChild<StateMachine>("BotStateMachine");
             m_AttackController = GetComponent<AttackController>();
+        }
+
+        private void Start()
+        {
+            Initialize();
         }
 
         [Button("Initialize AI")]

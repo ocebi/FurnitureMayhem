@@ -19,6 +19,9 @@ public class BotIdleState : State
     {
         base.OnStateEnter();
         //Check sensors
+        if (bot.AgentController.HasSoul)
+            return;
+        
         chaseTarget = null;
         chaseTarget = bot.AISensor.IsObjectInRange(bot.SightRange, bot.TargetMask);
         int wanderRandom = UnityEngine.Random.Range(0, 10);

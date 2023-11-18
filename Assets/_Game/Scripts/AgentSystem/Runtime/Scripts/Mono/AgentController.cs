@@ -7,9 +7,10 @@ using UnityEngine;
 public class AgentController : MonoBehaviour
 {
     public bool HasSoul => m_HasSoul;
-    public bool IsHacked;
+    public bool IsHacked => m_HasSoul || m_IsHacked;
     [SerializeField, ReadOnly]
     private bool m_HasSoul;
+    private bool m_IsHacked;
     
     [SerializeField] private float m_Speed = 5;
 
@@ -19,9 +20,12 @@ public class AgentController : MonoBehaviour
     private AttackController m_AttackController;
     [SerializeField, ReadOnly]
     private HighlightController m_HighlightController;
-
+    [SerializeField, ReadOnly]
     private AgentMovement m_AgentMovement;
+    [SerializeField, ReadOnly]
     private AgentRotate m_AgentRotate;
+    [SerializeField, ReadOnly] 
+    private Collector m_Collector;
     private AgentPhysicController m_AgentPhysicsController;
 
     [ReadOnly] 
@@ -36,6 +40,7 @@ public class AgentController : MonoBehaviour
         m_AgentRotate = GetComponent<AgentRotate>();
         m_HighlightController = GetComponent<HighlightController>();
         m_AttackController = GetComponent<AttackController>();
+        m_Collector = GetComponentInChildren<Collector>();
     }
 
     private void OnValidate()
@@ -54,6 +59,7 @@ public class AgentController : MonoBehaviour
         GameStateManager.Instance.StateMachine.OnStateChanged += onStateChanged;
         m_AgentInputController.OnMovementUp += OnMovementUp;
         m_AgentInputController.OnAttack += Attack;
+        m_Collector.OnCollectTargetReached += OnCollectTargetReached;
     }
 
     private void OnDisable()
@@ -61,6 +67,7 @@ public class AgentController : MonoBehaviour
         m_AgentInputController.OnJump -= onJump;
         m_AgentInputController.OnMovementUp -= OnMovementUp;
         m_AgentInputController.OnAttack -= Attack;
+        m_Collector.OnCollectTargetReached -= OnCollectTargetReached;
         if (GameStateManager.Instance)
             GameStateManager.Instance.StateMachine.OnStateChanged -= onStateChanged;
     }
@@ -84,6 +91,11 @@ public class AgentController : MonoBehaviour
         // m_CharacterActor.ForceNotGrounded();
         // m_CharacterActor.VerticalVelocity = m_CharacterActor.Up * 7.5f;
     }
+    
+    private void OnCollectTargetReached()
+    {
+        SetHacked();
+    }
 
     private void OnMovementUp()
     {
@@ -96,7 +108,11 @@ public class AgentController : MonoBehaviour
         if (!i_Value)
             m_AgentInputController.SetMoveInput(Vector2.zero);
         m_HasSoul = i_Value;
-        IsHacked = i_Value; //TODO: Shouldn't be set to false when jumping out of hacked character
+    }
+
+    public void SetHacked()
+    {
+        m_IsHacked = true;
     }
     
     private void onStateChanged(string i_State)

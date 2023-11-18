@@ -19,6 +19,12 @@ public class PlayerTransitionState : State
             PlayerManager.Instance.SetPlayerTarget(agentController);
             Debug.LogError("Target found");
         }
+        else if (Physics.Raycast(ray, out hitInfo, 100f, LayerMask.GetMask("MysteryBox")) && 
+                 hitInfo.transform.TryGetComponent<MysteryBox>(out var mysteryBox))
+        {
+            PlayerManager.Instance.SetPlayerTarget(mysteryBox.OpenBox().GetComponent<AgentController>());
+            Debug.LogError("Mystery box found");
+        }
         else
         {
             Debug.LogError("Target not found");

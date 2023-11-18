@@ -23,6 +23,7 @@ public class ReplenishableUI : MonoBehaviour
 
     private void Awake()
     {
+        setRefs();
         m_ProgressBar.SetBar(m_Replenishable.MaxValue, 0, m_Replenishable.MaxValue);
     }
 
