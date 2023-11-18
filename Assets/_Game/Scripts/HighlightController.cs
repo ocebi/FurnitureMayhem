@@ -22,6 +22,8 @@ public class HighlightController : MonoBehaviour
     [SerializeField, ReadOnly]
     private bool m_IsHighlightActive;
 
+    private bool m_IsTransitionActive;
+
     [Button]
     private void setRefs()
     {
@@ -36,7 +38,7 @@ public class HighlightController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (m_IsHighlightActive)
+        if (m_IsTransitionActive)
         {
             SetTrajectory(PlayerManager.Instance.ActiveAgent.transform);
             // Soul.Instance.ActiveAgent?.SetTrajectory(transform);
@@ -91,6 +93,8 @@ public class HighlightController : MonoBehaviour
         m_SoulTargetHighlight.SetHighlighted(false);
         m_SelectedHighlight.SetHighlighted(false);
         m_IsHighlightActive = false;
+        m_IsTransitionActive = false;
+
     }
 
     public void SetTrajectory(Transform m_TargetTransform)
@@ -101,7 +105,54 @@ public class HighlightController : MonoBehaviour
         // m_LineRenderer.gameObject.SetActive(true);
 
         m_VisualEffect.gameObject.SetActive(true);
-        m_VisualEffect.SetVector3("StartPos", m_TargetTransform.position + Vector3.up * 0.5f);
-        m_VisualEffect.SetVector3("TargetPos", transform.position + Vector3.up * 0.5f);
+        m_VisualEffect.SetVector3("StartPos", transform.position + Vector3.up * 0.5f);
+        m_VisualEffect.SetVector3("TargetPos", GetMouseWorldPosition() + Vector3.up * 0.5f);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            if (hit.transform.GetComponent<AgentController>() != null)
+            {
+                m_VisualEffect.SetFloat("SpawnRate", 12);
+                m_VisualEffect.SetFloat("Lifetime", 1);
+                m_VisualEffect.SetFloat("Blend", 0.5f);
+            }
+            else
+            {
+                m_VisualEffect.SetFloat("SpawnRate", 6);
+                m_VisualEffect.SetFloat("Lifetime", 2);
+                m_VisualEffect.SetFloat("Blend", 0.03f);
+            }
+        }
+    }
+
+    public void SetTransitionHighlight()
+    {
+        Debug.Log("transition");
+        m_IsTransitionActive = true;
+    }
+
+    Vector3 GetMouseWorldPosition()
+    {
+        Vector3 result = new Vector3();
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            result = hit.point;
+        }
+        else
+        {
+            result = Input.mousePosition;
+
+            result.z = CameraManager.Instance.Camera.transform.position.z;
+            result = CameraManager.Instance.Camera.ScreenToWorldPoint(result);
+        }
+
+        return result;
     }
 }

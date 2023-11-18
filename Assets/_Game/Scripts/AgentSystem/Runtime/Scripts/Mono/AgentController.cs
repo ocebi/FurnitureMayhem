@@ -102,7 +102,11 @@ public class AgentController : MonoBehaviour
     private void onStateChanged(string i_State)
     {
         if (i_State == nameof(SpecialVisionState))
+        {
             m_HighlightController.SetSoulTargetHighlight();
+            if (HasSoul)
+                m_HighlightController.SetTransitionHighlight();
+        }
         else if (i_State == nameof(PlayerTransitionState) || i_State == nameof(GameplayState))
             m_HighlightController.DisableAllHighlight();
     }
