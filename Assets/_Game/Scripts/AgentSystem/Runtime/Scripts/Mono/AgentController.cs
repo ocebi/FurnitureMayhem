@@ -19,6 +19,8 @@ public class AgentController : MonoBehaviour
     private AgentInputController m_AgentInputController;
     [SerializeField, ReadOnly] 
     private AttackController m_AttackController;
+    [SerializeField, ReadOnly] 
+    private AnimatorController m_AnimatorController;
     [SerializeField, ReadOnly]
     private HighlightController m_HighlightController;
     [SerializeField, ReadOnly]
@@ -42,6 +44,7 @@ public class AgentController : MonoBehaviour
         m_HighlightController = GetComponent<HighlightController>();
         m_AttackController = GetComponent<AttackController>();
         m_Collector = GetComponentInChildren<Collector>();
+        m_AnimatorController = GetComponent<AnimatorController>();
     }
 
     private void OnValidate()
@@ -56,7 +59,6 @@ public class AgentController : MonoBehaviour
 
     private void OnEnable()
     {
-        m_AgentInputController.OnJump += onJump;
         GameStateManager.Instance.StateMachine.OnStateChanged += onStateChanged;
         m_AgentInputController.OnMovementUp += OnMovementUp;
         m_AgentInputController.OnAttack += Attack;
@@ -65,7 +67,6 @@ public class AgentController : MonoBehaviour
 
     private void OnDisable()
     {
-        m_AgentInputController.OnJump -= onJump;
         m_AgentInputController.OnMovementUp -= OnMovementUp;
         m_AgentInputController.OnAttack -= Attack;
         m_Collector.OnCollectTargetReached -= OnCollectTargetReached;
@@ -80,17 +81,6 @@ public class AgentController : MonoBehaviour
             m_AgentMovement.MoveCharacter(m_AgentInputController.MovementInput);
             m_AgentRotate.Rotate(m_AgentInputController.MovementInput);
         }
-    }
-    
-    private void onJump()
-    {
-        //TODO: Implement jump
-        // if (!m_CharacterActor.IsGrounded)
-        //     return;
-        // // Debug.LogError("Jump");
-        //
-        // m_CharacterActor.ForceNotGrounded();
-        // m_CharacterActor.VerticalVelocity = m_CharacterActor.Up * 7.5f;
     }
     
     private void OnCollectTargetReached()
@@ -146,6 +136,7 @@ public class AgentController : MonoBehaviour
             transform.LookAt(lookPos, Vector3.up);
             var attackDirection = (lookPos - transform.position).normalized;
             m_AttackController.Attack(attackDirection);
+            m_AnimatorController.PlayAttack();
             Invoke(nameof(EnableRotate), 0.5f);
         }
     }

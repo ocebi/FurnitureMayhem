@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 5320090538615944420}
   - component: {fileID: 6866213947906148498}
   - component: {fileID: 67774309701086863}
+  - component: {fileID: 5174491427803820211}
   m_Layer: 6
   m_Name: BaseRobot
   m_TagString: Untagged
@@ -309,6 +310,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &5174491427803820211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345055916182327661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6555c29b6f454af793aea7ea0577d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &2881388121019475655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,8 +1456,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5024a4058d7c05241b04e0c896b365f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AgentController: {fileID: 0}
   m_Replenishable: {fileID: 0}
   m_ProgressBar: {fileID: 6871966128773850111}
+  m_BarFront: {fileID: 4499263242334254361}
+--- !u!114 &4499263242334254361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2203340171856394327, guid: 98bdf8422be5543f882a49932a171519,
+    type: 3}
+  m_PrefabInstance: {fileID: 2369823740228209998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6871966128773850111 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9204635165362745009, guid: 98bdf8422be5543f882a49932a171519,
