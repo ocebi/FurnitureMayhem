@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AgentInputController))]
 public class AgentController : MonoBehaviour
 {
+    public Action OnHacked;
     public bool HasSoul => m_HasSoul;
     public bool IsHacked => m_HasSoul || m_IsHacked;
     [SerializeField, ReadOnly]
@@ -113,6 +114,8 @@ public class AgentController : MonoBehaviour
     public void SetHacked()
     {
         m_IsHacked = true;
+        m_HighlightController.SetHackedHighlight();
+        OnHacked.InvokeSafe();
     }
     
     private void onStateChanged(string i_State)

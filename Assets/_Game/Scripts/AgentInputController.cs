@@ -74,7 +74,6 @@ public class AgentInputController : MonoBehaviour
     {
         if (!m_UsePlayerInput)
         {
-            Debug.LogError($"Set move input: {i_Movement}");
             setMoveInput(i_Movement);
         }
         else

@@ -32,7 +32,8 @@ public class Projectile : MonoBehaviour
         if (m_Owner == null)
             return;
         if (other.TryGetComponent<AgentController>(out var agentController) &&
-            agentController != m_Owner)
+            agentController != m_Owner &&
+            agentController.IsHacked != m_Owner.IsHacked)
         {
             agentController.GetComponent<Health>().DecreaseValue(10);
             CancelInvoke();
