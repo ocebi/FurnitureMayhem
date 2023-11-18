@@ -42,6 +42,8 @@ public class AgentController : MonoBehaviour
     [ReadOnly] 
     public Transform VisualTransform;
 
+    [SerializeField] GameObject deathParticlePrefab;
+
     [Button]
     private void setRefs()
     {
@@ -194,6 +196,7 @@ public class AgentController : MonoBehaviour
 
     private void OnHealthBelowZero()
     {
+        Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
