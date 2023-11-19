@@ -311,6 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Collider: {fileID: 8269082293251103353}
   m_HighlightController: {fileID: 8527105278313032197}
+  m_puffParticles: {fileID: 3735005647012430902, guid: e34eed32d647a49d9aea94ef3bd59a51,
+    type: 3}
 --- !u!208 &7747330164347495524
 NavMeshObstacle:
   m_ObjectHideFlags: 0
