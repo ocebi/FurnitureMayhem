@@ -27,6 +27,8 @@ public class MenuManager : Singleton<MenuManager>
     private GameObject m_GameplayPanel;
     [SerializeField, ReadOnly] 
     private GameObject m_FinishPanel;
+    [SerializeField, ReadOnly] 
+    private GameObject m_GameOverPanel;
 
     [SerializeField, ReadOnly] 
     private Button m_RestartButton;
@@ -36,6 +38,8 @@ public class MenuManager : Singleton<MenuManager>
     private Button m_QuitButton;
     [SerializeField, ReadOnly] 
     private Button m_AboutButton;
+    [SerializeField, ReadOnly] 
+    private Button m_GameOverRestartButton;
 
     [Button]
     private void SetRefs()
@@ -48,10 +52,12 @@ public class MenuManager : Singleton<MenuManager>
         m_ProgressBar = transform.FindDeepChild<Image>("ProgressBar");
         m_GameplayPanel = transform.FindDeepChild<GameObject>("GameplayPanel");
         m_FinishPanel = transform.FindDeepChild<GameObject>("FinishPanel");
+        m_GameOverPanel = transform.FindDeepChild<GameObject>("GameOverPanel");
         m_RestartButton = transform.FindDeepChild<Button>("RestartButton");
         m_StartButton = transform.FindDeepChild<Button>("StartButton");
         m_QuitButton = transform.FindDeepChild<Button>("QuitButton");
         m_AboutButton = transform.FindDeepChild<Button>("AboutButton");
+        m_GameOverRestartButton = transform.FindDeepChild<Button>("GameOverRestartButton");
         m_TargetHackText = transform.FindDeepChild<TMP_Text>("TargetHackText");
         m_CooldownText = transform.FindDeepChild<TMP_Text>("CooldownText");
         
@@ -70,6 +76,7 @@ public class MenuManager : Singleton<MenuManager>
         m_StartButton.onClick.AddListener(OnStartClicked);
         m_QuitButton.onClick.AddListener(OnQuitClicked);
         m_AboutButton.onClick.AddListener(OnAboutClicked);
+        m_GameOverRestartButton.onClick.AddListener(OnRestartClicked);
     }
 
     public override void OnDisable()
@@ -79,6 +86,7 @@ public class MenuManager : Singleton<MenuManager>
         m_StartButton.onClick.RemoveAllListeners();
         m_QuitButton.onClick.RemoveAllListeners();
         m_AboutButton.onClick.RemoveAllListeners();
+        m_GameOverRestartButton.onClick.RemoveAllListeners();
     }
 
     public override void Start()
@@ -87,6 +95,7 @@ public class MenuManager : Singleton<MenuManager>
         m_StartPanel.SetActive(true);
         m_GameplayPanel.SetActive(false);
         m_FinishPanel.SetActive(false);
+        m_GameOverPanel.SetActive(false);
         m_CooldownText.gameObject.SetActive(false);
     }
 
@@ -115,10 +124,19 @@ public class MenuManager : Singleton<MenuManager>
         m_FinishPanel.SetActive(true);
     }
 
+    public void SetGameOverScreen()
+    {
+        m_StartPanel.SetActive(false);
+        m_GameplayPanel.SetActive(false);
+        m_FinishPanel.SetActive(false);
+        m_GameOverPanel.SetActive(true);
+    }
+
     public void SetCooldownText(float cooldown)
     {
         CancelInvoke(nameof(DisableCooldownText));
-        m_CooldownText.SetText($"Cooldown ({cooldown:0.00} sec)");
+        var cooldownText = $"Cooldown (<color=red>{cooldown:0.00} sec</color>)";//COOLDOWN (<color=red>2.3 SEC</color>)
+        m_CooldownText.SetText(cooldownText);
         m_CooldownText.gameObject.SetActive(true);
         Invoke(nameof(DisableCooldownText), 1.5f);
     }

@@ -57,6 +57,12 @@ public class GameStateManager : Singleton<GameStateManager>
         }
     }
 
+    public void FailGame()
+    {
+        IsGameFinished = true;
+        MenuManager.Instance.SetGameOverScreen();
+    }
+
     private void OnValidate()
     {
         setRefs();

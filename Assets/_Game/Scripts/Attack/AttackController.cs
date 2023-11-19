@@ -57,6 +57,7 @@ public class AttackController : MonoBehaviour
                 if (health.WillHealthDeplete(m_Damage) && m_AgentController.HasSoul)
                     GameStateManager.Instance.OnAgentHacked();
                 health.DecreaseValue(m_Damage);
+                SoundManager.Instance.PlaySound(m_AgentController.AttackSound);
             }
             //TODO: Play attack animation
         }

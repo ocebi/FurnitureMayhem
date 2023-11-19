@@ -11,6 +11,7 @@ public class AgentController : MonoBehaviour
     public Action OnControlTaken;
     public bool HasSoul => m_HasSoul;
     public bool IsHacked => m_HasSoul || m_IsHacked;
+    public eSoundType AttackSound => m_AttackSound;
     [SerializeField, ReadOnly]
     private bool m_HasSoul;
     private bool m_IsHacked;
@@ -203,6 +204,8 @@ public class AgentController : MonoBehaviour
     private void OnHealthBelowZero()
     {
         Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        if (HasSoul)
+            GameStateManager.Instance.FailGame();
         Destroy(gameObject);
     }
 }
