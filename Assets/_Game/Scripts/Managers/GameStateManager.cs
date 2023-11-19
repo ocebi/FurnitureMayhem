@@ -18,7 +18,6 @@ public class GameStateManager : Singleton<GameStateManager>
     public int GameTime => (int)(Time.time - GameStartTime);
     private float m_LastJumpTime;
 
-
     protected override void OnEnable()
     {
         if (StateMachine)
