@@ -25,7 +25,7 @@ MonoBehaviour:
     - Sprite: {fileID: 21300000, guid: a4115eb6f727e4b27be339c732644218, type: 3}
     - Sprite: {fileID: 21300000, guid: fe160f2c0822440dbb550a16853a08b9, type: 3}
   TargetHackAmount: 15
-  JumpCooldown: 5
+  JumpCooldown: 3
   SoundDictionary:
     keyData: 000000000200000001000000
     valueData:
