@@ -126,8 +126,8 @@ public class HighlightController : MonoBehaviour
             else
             {
                 m_VisualEffect.SetFloat("SpawnRate", 50);
-                m_VisualEffect.SetFloat("Lifetime", 2);
-                m_VisualEffect.SetFloat("Blend", 0.02f);
+                m_VisualEffect.SetFloat("Lifetime", 1.5f);
+                m_VisualEffect.SetFloat("Blend", 0.04f);
             }
         }
     }

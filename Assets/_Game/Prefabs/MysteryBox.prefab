@@ -116,7 +116,7 @@ MonoBehaviour:
   overlayTextureScale: 1
   overlayVisibility: 0
   outline: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0.7254902, b: 0, a: 1}
   outlineColorStyle: 0
   outlineGradient:
     serializedVersion: 2
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Collider: {fileID: 8269082293251103353}
+  m_HighlightController: {fileID: 8527105278313032197}
 --- !u!208 &7747330164347495524
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -455,7 +456,7 @@ MonoBehaviour:
   overlayTextureScale: 1
   overlayVisibility: 0
   outline: 1
-  outlineColor: {r: 1, g: 0.72379285, b: 0, a: 1}
+  outlineColor: {r: 0.5943396, g: 0.43118757, b: 0, a: 1}
   outlineColorStyle: 0
   outlineGradient:
     serializedVersion: 2

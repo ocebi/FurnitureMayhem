@@ -875,7 +875,7 @@ MonoBehaviour:
   overlayTextureScale: 1
   overlayVisibility: 0
   outline: 1
-  outlineColor: {r: 1, g: 0.72379285, b: 0, a: 1}
+  outlineColor: {r: 0.38679248, g: 0.28211668, b: 0.0054734685, a: 1}
   outlineColorStyle: 0
   outlineGradient:
     serializedVersion: 2
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   overlayTextureScale: 1
   overlayVisibility: 0
   outline: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0.7254902, b: 0, a: 1}
   outlineColorStyle: 0
   outlineGradient:
     serializedVersion: 2
