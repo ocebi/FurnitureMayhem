@@ -9,6 +9,8 @@ public class MysteryBox : MonoBehaviour
     [SerializeField, ReadOnly] 
     private MysteryBoxHighlightController m_HighlightController;
 
+    [SerializeField] GameObject m_puffParticles;
+
     private void SetRefs()
     {
         m_Collider = GetComponent<BoxCollider>();
@@ -34,6 +36,7 @@ public class MysteryBox : MonoBehaviour
 
     public GameObject OpenBox()
     {
+        Instantiate(m_puffParticles, transform.position + Vector3.up, Quaternion.identity);
         m_Collider.enabled = false;
         Invoke(nameof(DestroySelf), 0.1f);
         return Instantiate(GameConfig.Instance.RobotPrefabs.GetRandomItem(), transform.position, Quaternion.identity);
