@@ -42,6 +42,8 @@ public class AgentController : MonoBehaviour
     private PunchScaleFeedback m_PunchScaleFeedback;
     [ReadOnly] 
     public Transform VisualTransform;
+    [SerializeField] 
+    private eSoundType m_AttackSound;
 
     [SerializeField] GameObject deathParticlePrefab;
 
@@ -183,6 +185,7 @@ public class AgentController : MonoBehaviour
             var attackDirection = (lookPos - transform.position).normalized;
             m_AttackController.Attack(attackDirection);
             m_AnimatorController.PlayAttack();
+            SoundManager.Instance.PlaySound(m_AttackSound);
             Invoke(nameof(EnableRotate), 0.5f);
         }
     }
@@ -195,7 +198,6 @@ public class AgentController : MonoBehaviour
     private void OnHealthChanged()
     {
         m_PunchScaleFeedback.Play();
-        SoundManager.Instance.PlaySound(eSoundType.Damage);
     }
 
     private void OnHealthBelowZero()

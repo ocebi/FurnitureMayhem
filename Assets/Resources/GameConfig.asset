@@ -27,8 +27,10 @@ MonoBehaviour:
   TargetHackAmount: 10
   JumpCooldown: 5
   SoundDictionary:
-    keyData: 00000000
+    keyData: 000000000200000001000000
     valueData:
+    - {fileID: 8300000, guid: 5ee54fa369f2b4b49af7074f1eea87d9, type: 3}
+    - {fileID: 8300000, guid: 9bb890b77bf304629b2819a211e92ac1, type: 3}
     - {fileID: 8300000, guid: 5ee54fa369f2b4b49af7074f1eea87d9, type: 3}
   PlayThreshold: {x: 0, y: 0}
   SoundPitchRange: {x: 0.8, y: 1.2}

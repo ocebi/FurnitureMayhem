@@ -1,4 +1,6 @@
 public enum eSoundType
 {
-    Damage
+    ToasterDamage = 0,
+    WasherDamage = 1,
+    VacuumDamage = 2
 }

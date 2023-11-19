@@ -11716,7 +11716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hack Robots
+  m_text: Hack or Kill Robots
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23ee347e1aff5416385d70000e1dea87, type: 2}
   m_sharedMaterial: {fileID: -6353048138431519484, guid: 23ee347e1aff5416385d70000e1dea87,

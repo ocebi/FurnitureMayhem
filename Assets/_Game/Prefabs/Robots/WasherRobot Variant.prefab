@@ -23,6 +23,11 @@ PrefabInstance:
       propertyPath: m_Cooldown
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3520786676332822508, guid: 9f287c96cf2784a88badaf73d6e5d177,
+        type: 3}
+      propertyPath: m_AttackSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321810874827331584, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: m_LocalPosition.x
