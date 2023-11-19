@@ -11,6 +11,7 @@ public class GameConfig : SingletonScriptableObject<GameConfig>
     public List<GameObject> RobotPrefabs = new List<GameObject>();
     public CollectableDataDict CollectableDataDict = new CollectableDataDict();
     public int TargetHackAmount = 10;
+    public float JumpCooldown = 5;
 }
 
 [Serializable]

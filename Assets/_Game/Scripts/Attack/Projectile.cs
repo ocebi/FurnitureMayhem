@@ -35,7 +35,10 @@ public class Projectile : MonoBehaviour
             agentController != m_Owner &&
             agentController.IsHacked != m_Owner.IsHacked)
         {
-            agentController.GetComponent<Health>().DecreaseValue(10);
+            var health = agentController.GetComponent<Health>(); 
+            if (health.WillHealthDeplete(10) && m_Owner && m_Owner.HasSoul)
+                GameStateManager.Instance.OnAgentHacked();
+            health.DecreaseValue(10);
             CancelInvoke();
             Destroy(gameObject);
         }

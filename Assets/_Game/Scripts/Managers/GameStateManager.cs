@@ -16,6 +16,7 @@ public class GameStateManager : Singleton<GameStateManager>
     private int m_CurrentHackedAmount = 0;
     public float GameStartTime;
     public int GameTime => (int)(Time.time - GameStartTime);
+    private float m_LastJumpTime;
 
 
     protected override void OnEnable()
@@ -39,7 +40,7 @@ public class GameStateManager : Singleton<GameStateManager>
         AgentController.OnHacked -= OnAgentHacked;
     }
 
-    private void OnAgentHacked()
+    public void OnAgentHacked()
     {
         ++m_CurrentHackedAmount;
         MenuManager.Instance.SetProgressBar(m_CurrentHackedAmount, GameConfig.Instance.TargetHackAmount);
@@ -68,15 +69,28 @@ public class GameStateManager : Singleton<GameStateManager>
             StateMachine = GetComponentInChildren<StateMachine>();
     }
 
-    public override void Start()
+    [Button]
+    public void StartGame()
     {
-        PlayerManager.Instance.SetPlayerTarget(m_InitialAgent);
+        var robots = FindObjectsOfType<AgentController>();
+        AgentController chosenAgent = null;
+        float closestDistance = 1000;
+        foreach (var agentController in robots)
+        {
+            var distance = Vector3.Distance(Vector3.zero, agentController.transform.position); 
+            if (distance < closestDistance)
+            {
+                chosenAgent = agentController;
+                closestDistance = distance;
+            }
+        }
+        PlayerManager.Instance.SetPlayerTarget(chosenAgent);
         MenuManager.Instance.SetTargetHackText(m_CurrentHackedAmount);
     }
 
-    public void StartGame()
+    public void SetLastJumpTime()
     {
-        GameStartTime = Time.time;
+        m_LastJumpTime = Time.time;
     }
 
     private void onStateChanged(string i_State)
@@ -87,7 +101,8 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         if (StateMachine.CurrentState.GetType() == typeof(PlayerTransitionState))
             return;
-        
+        if (Time.time - m_LastJumpTime < GameConfig.Instance.JumpCooldown)
+            return;
         StateMachine.SetNewState(nameof(SpecialVisionState));
     }
     
