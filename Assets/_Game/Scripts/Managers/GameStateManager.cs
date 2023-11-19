@@ -17,6 +17,7 @@ public class GameStateManager : Singleton<GameStateManager>
     public float GameStartTime;
     public int GameTime => (int)(Time.time - GameStartTime);
 
+
     protected override void OnEnable()
     {
         if (StateMachine)
@@ -42,9 +43,10 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         ++m_CurrentHackedAmount;
         MenuManager.Instance.SetProgressBar(m_CurrentHackedAmount, GameConfig.Instance.TargetHackAmount);
+        MenuManager.Instance.SetTargetHackText(m_CurrentHackedAmount);
         if (m_CurrentHackedAmount >= GameConfig.Instance.TargetHackAmount)
         {
-            var highScore = PlayerPrefs.GetInt("Highscore", 0);
+            var highScore = PlayerPrefs.GetInt("Highscore", 10000);
             var currentScore = GameTime;
             if (currentScore < highScore)
                 PlayerPrefs.SetInt("Highscore", currentScore);
@@ -69,6 +71,7 @@ public class GameStateManager : Singleton<GameStateManager>
     public override void Start()
     {
         PlayerManager.Instance.SetPlayerTarget(m_InitialAgent);
+        MenuManager.Instance.SetTargetHackText(m_CurrentHackedAmount);
     }
 
     public void StartGame()
