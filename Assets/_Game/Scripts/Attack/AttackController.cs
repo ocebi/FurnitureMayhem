@@ -57,16 +57,14 @@ public class AttackController : MonoBehaviour
                 if (health.WillHealthDeplete(m_Damage) && m_AgentController.HasSoul)
                     GameStateManager.Instance.OnAgentHacked();
                 health.DecreaseValue(m_Damage);
-                SoundManager.Instance.PlaySound(m_AgentController.AttackSound);
             }
-            //TODO: Play attack animation
         }
         else if (m_AttackType == eAttackType.Ranged)
         {
             var projectile = Instantiate(m_ProjectilePrefab, transform.position + direction, Quaternion.LookRotation(direction));
             projectile.Shoot(direction, m_AgentController);
         }
-        
+        SoundManager.Instance.PlaySound(m_AgentController.AttackSound);
         m_LastAttackTime = Time.time;
     }
 

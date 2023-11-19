@@ -24,13 +24,13 @@ MonoBehaviour:
     - Sprite: {fileID: 21300000, guid: d020294b5ccc94ce4985d5cd865c4174, type: 3}
     - Sprite: {fileID: 21300000, guid: a4115eb6f727e4b27be339c732644218, type: 3}
     - Sprite: {fileID: 21300000, guid: fe160f2c0822440dbb550a16853a08b9, type: 3}
-  TargetHackAmount: 10
+  TargetHackAmount: 15
   JumpCooldown: 5
   SoundDictionary:
     keyData: 000000000200000001000000
     valueData:
     - {fileID: 8300000, guid: 5ee54fa369f2b4b49af7074f1eea87d9, type: 3}
     - {fileID: 8300000, guid: 9bb890b77bf304629b2819a211e92ac1, type: 3}
-    - {fileID: 8300000, guid: 5ee54fa369f2b4b49af7074f1eea87d9, type: 3}
+    - {fileID: 8300000, guid: a3817973ede234e739336e12b4ca351d, type: 3}
   PlayThreshold: {x: 0, y: 0}
   SoundPitchRange: {x: 0.8, y: 1.2}
