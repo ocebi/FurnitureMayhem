@@ -23,6 +23,7 @@ public class GameStateManager : Singleton<GameStateManager>
             StateMachine.OnStateChanged += onStateChanged;
         InputManager.OnSpecialVisionKeyDown += onSpecialVisionKeyDown;
         InputManager.OnSpecialVisionKeyUp += onSpecialVisionKeyUp;
+        InputManager.OnMouseUp += onMouseUp;
         AgentController.OnHacked += OnAgentHacked;
     }
 
@@ -33,6 +34,7 @@ public class GameStateManager : Singleton<GameStateManager>
             StateMachine.OnStateChanged -= onStateChanged;
         InputManager.OnSpecialVisionKeyDown -= onSpecialVisionKeyDown;
         InputManager.OnSpecialVisionKeyUp -= onSpecialVisionKeyUp;
+        InputManager.OnMouseUp -= onMouseUp;
         AgentController.OnHacked -= OnAgentHacked;
     }
 
@@ -87,6 +89,12 @@ public class GameStateManager : Singleton<GameStateManager>
     }
     
     private void onSpecialVisionKeyUp()
+    {
+        if (StateMachine.CurrentState.GetType() == typeof(SpecialVisionState))
+            StateMachine.SetNewState(nameof(PlayerTransitionState));
+    }
+
+    private void onMouseUp()
     {
         if (StateMachine.CurrentState.GetType() == typeof(SpecialVisionState))
             StateMachine.SetNewState(nameof(PlayerTransitionState));
