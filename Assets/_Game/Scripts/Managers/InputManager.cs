@@ -13,6 +13,7 @@ public class InputManager : Singleton<InputManager>
     public static Action OnSpecialVisionKeyDown;
     public static Action OnSpecialVisionKeyUp;
     public static Action OnAttack;
+    public static Action OnMouseUp;
     #endregion
     
     #region Movement Vars
@@ -46,5 +47,7 @@ public class InputManager : Singleton<InputManager>
             OnSpecialVisionKeyUp.InvokeSafe();
         if (Input.GetMouseButtonDown(0))
             OnAttack.InvokeSafe();
+        if (Input.GetMouseButtonUp(0))
+            OnMouseUp.InvokeSafe();
     }
 }
