@@ -102,7 +102,10 @@ public class GameStateManager : Singleton<GameStateManager>
         if (StateMachine.CurrentState.GetType() == typeof(PlayerTransitionState))
             return;
         if (Time.time - m_LastJumpTime < GameConfig.Instance.JumpCooldown)
+        {
+            MenuManager.Instance.SetCooldownText((GameConfig.Instance.JumpCooldown - (Time.time - m_LastJumpTime)));
             return;
+        }
         StateMachine.SetNewState(nameof(SpecialVisionState));
     }
     

@@ -100,6 +100,7 @@ public class AgentController : MonoBehaviour
     {
         if (HasSoul)
             m_Health.IsInvulnerable = true;
+        OnMovementUp();
     }
 
     private void FixedUpdate()
@@ -194,6 +195,7 @@ public class AgentController : MonoBehaviour
     private void OnHealthChanged()
     {
         m_PunchScaleFeedback.Play();
+        SoundManager.Instance.PlaySound(eSoundType.Damage);
     }
 
     private void OnHealthBelowZero()

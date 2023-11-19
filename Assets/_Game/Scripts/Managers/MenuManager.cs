@@ -14,6 +14,8 @@ public class MenuManager : Singleton<MenuManager>
     private TMP_Text m_HighscoreText;
     [SerializeField, ReadOnly]
     private TMP_Text m_TargetHackText;
+    [SerializeField, ReadOnly]
+    private TMP_Text m_CooldownText;
     [SerializeField, ReadOnly] 
     private Image m_TargetImage;
     [SerializeField, ReadOnly] 
@@ -30,6 +32,10 @@ public class MenuManager : Singleton<MenuManager>
     private Button m_RestartButton;
     [SerializeField, ReadOnly] 
     private Button m_StartButton;
+    [SerializeField, ReadOnly] 
+    private Button m_QuitButton;
+    [SerializeField, ReadOnly] 
+    private Button m_AboutButton;
 
     [Button]
     private void SetRefs()
@@ -44,7 +50,12 @@ public class MenuManager : Singleton<MenuManager>
         m_FinishPanel = transform.FindDeepChild<GameObject>("FinishPanel");
         m_RestartButton = transform.FindDeepChild<Button>("RestartButton");
         m_StartButton = transform.FindDeepChild<Button>("StartButton");
+        m_QuitButton = transform.FindDeepChild<Button>("QuitButton");
+        m_AboutButton = transform.FindDeepChild<Button>("AboutButton");
         m_TargetHackText = transform.FindDeepChild<TMP_Text>("TargetHackText");
+        m_CooldownText = transform.FindDeepChild<TMP_Text>("CooldownText");
+        
+        
     }
 
     private void OnValidate()
@@ -57,6 +68,8 @@ public class MenuManager : Singleton<MenuManager>
         base.OnEnable();
         m_RestartButton.onClick.AddListener(OnRestartClicked);
         m_StartButton.onClick.AddListener(OnStartClicked);
+        m_QuitButton.onClick.AddListener(OnQuitClicked);
+        m_AboutButton.onClick.AddListener(OnAboutClicked);
     }
 
     public override void OnDisable()
@@ -64,6 +77,8 @@ public class MenuManager : Singleton<MenuManager>
         base.OnDisable();
         m_RestartButton.onClick.RemoveAllListeners();
         m_StartButton.onClick.RemoveAllListeners();
+        m_QuitButton.onClick.RemoveAllListeners();
+        m_AboutButton.onClick.RemoveAllListeners();
     }
 
     public override void Start()
@@ -72,6 +87,7 @@ public class MenuManager : Singleton<MenuManager>
         m_StartPanel.SetActive(true);
         m_GameplayPanel.SetActive(false);
         m_FinishPanel.SetActive(false);
+        m_CooldownText.gameObject.SetActive(false);
     }
 
     public void SetTarget(eCollectable collectableType, int currentAmount, int targetAmount)
@@ -99,6 +115,19 @@ public class MenuManager : Singleton<MenuManager>
         m_FinishPanel.SetActive(true);
     }
 
+    public void SetCooldownText(float cooldown)
+    {
+        CancelInvoke(nameof(DisableCooldownText));
+        m_CooldownText.SetText($"Cooldown ({cooldown:0.00} sec)");
+        m_CooldownText.gameObject.SetActive(true);
+        Invoke(nameof(DisableCooldownText), 1.5f);
+    }
+
+    private void DisableCooldownText()
+    {
+        m_CooldownText.gameObject.SetActive(false);
+    }
+
     private void OnRestartClicked()
     {
         SceneManager.LoadScene(0);
@@ -110,5 +139,15 @@ public class MenuManager : Singleton<MenuManager>
         m_GameplayPanel.SetActive(true);
         m_FinishPanel.SetActive(false);
         GameStateManager.Instance.StartGame();
+    }
+
+    private void OnAboutClicked()
+    {
+        
+    }
+
+    private void OnQuitClicked()
+    {
+        Application.Quit();
     }
 }

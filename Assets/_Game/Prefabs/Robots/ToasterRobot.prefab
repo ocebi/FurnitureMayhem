@@ -232,12 +232,12 @@ PrefabInstance:
     - target: {fileID: 6866213947906148498, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: SightRange
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6866213947906148498, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
       propertyPath: AttackRange
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8079024815260966539, guid: 9f287c96cf2784a88badaf73d6e5d177,
         type: 3}
