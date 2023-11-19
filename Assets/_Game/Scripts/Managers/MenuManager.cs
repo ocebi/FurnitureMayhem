@@ -20,16 +20,21 @@ public class MenuManager : Singleton<MenuManager>
     private Image m_ProgressBar;
 
     [SerializeField, ReadOnly] 
+    private GameObject m_StartPanel;
+    [SerializeField, ReadOnly] 
     private GameObject m_GameplayPanel;
     [SerializeField, ReadOnly] 
     private GameObject m_FinishPanel;
 
     [SerializeField, ReadOnly] 
     private Button m_RestartButton;
+    [SerializeField, ReadOnly] 
+    private Button m_StartButton;
 
     [Button]
     private void SetRefs()
     {
+        m_StartPanel = transform.FindDeepChild<GameObject>("StartPanel");
         m_TargetText = transform.FindDeepChild<TMP_Text>("TargetText");
         m_TimeText = transform.FindDeepChild<TMP_Text>("TimeText");
         m_HighscoreText = transform.FindDeepChild<TMP_Text>("HighscoreText");
@@ -38,6 +43,7 @@ public class MenuManager : Singleton<MenuManager>
         m_GameplayPanel = transform.FindDeepChild<GameObject>("GameplayPanel");
         m_FinishPanel = transform.FindDeepChild<GameObject>("FinishPanel");
         m_RestartButton = transform.FindDeepChild<Button>("RestartButton");
+        m_StartButton = transform.FindDeepChild<Button>("StartButton");
         m_TargetHackText = transform.FindDeepChild<TMP_Text>("TargetHackText");
     }
 
@@ -50,19 +56,22 @@ public class MenuManager : Singleton<MenuManager>
     {
         base.OnEnable();
         m_RestartButton.onClick.AddListener(OnRestartClicked);
+        m_StartButton.onClick.AddListener(OnStartClicked);
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
         m_RestartButton.onClick.RemoveAllListeners();
+        m_StartButton.onClick.RemoveAllListeners();
     }
 
     public override void Start()
     {
         base.Start();
+        m_StartPanel.SetActive(true);
+        m_GameplayPanel.SetActive(false);
         m_FinishPanel.SetActive(false);
-        m_GameplayPanel.SetActive(true);
     }
 
     public void SetTarget(eCollectable collectableType, int currentAmount, int targetAmount)
@@ -93,5 +102,13 @@ public class MenuManager : Singleton<MenuManager>
     private void OnRestartClicked()
     {
         SceneManager.LoadScene(0);
+    }
+
+    private void OnStartClicked()
+    {
+        m_StartPanel.SetActive(false);
+        m_GameplayPanel.SetActive(true);
+        m_FinishPanel.SetActive(false);
+        GameStateManager.Instance.StartGame();
     }
 }
