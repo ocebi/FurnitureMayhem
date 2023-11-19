@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using AgentSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -52,6 +48,7 @@ public class PlayerManager : MonoBehaviour
         CameraManager.Instance.SetCameraTarget(i_AgentController.VisualTransform);
         // m_TransformFollower.SetFollowTarget(i_AgentController.VisualTransform);
         setVfxOnMove();
+        GameStateManager.Instance.SetLastJumpTime();
     }
 
     private void onSoulTargetReached()
