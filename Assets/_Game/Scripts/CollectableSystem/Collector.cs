@@ -6,7 +6,7 @@ public class Collector : MonoBehaviour
 {
     public Action OnItemCollected;
     public Action OnCollectTargetReached;
-
+    public eCollectable CollectType => m_CollectType;
     [SerializeField] 
     private eCollectable m_CollectType;
     [SerializeField] 

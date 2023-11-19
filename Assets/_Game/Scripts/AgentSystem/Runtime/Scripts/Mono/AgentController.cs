@@ -8,10 +8,12 @@ using UnityEngine;
 public class AgentController : MonoBehaviour
 {
     public static Action OnHacked;
+    public static Action<AgentController> OnRobotControlTaken;
     public Action OnControlTaken;
     public bool HasSoul => m_HasSoul;
     public bool IsHacked => m_HasSoul || m_IsHacked;
     public eSoundType AttackSound => m_AttackSound;
+    public eCollectable CollectableType => m_Collector.CollectType;
     [SerializeField, ReadOnly]
     private bool m_HasSoul;
     private bool m_IsHacked;
@@ -145,6 +147,7 @@ public class AgentController : MonoBehaviour
             m_Bot.ResetAI();
             m_ReplenishableUI.SetBackgroundColor(Color.yellow);
             OnControlTaken.InvokeSafe();
+            OnRobotControlTaken.InvokeSafe(this);
         }
         m_HasSoul = i_Value;
     }
