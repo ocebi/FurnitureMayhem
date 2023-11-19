@@ -28,7 +28,6 @@ public class HighlightController : MonoBehaviour
     private void setRefs()
     {
         m_AgentController = GetComponent<AgentController>();
-        // m_LineRenderer = transform.FindDeepChild<LineRenderer>("LineRenderer");
     }
 
     private void OnValidate()

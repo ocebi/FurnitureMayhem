@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 6866213947906148498}
   - component: {fileID: 67774309701086863}
   - component: {fileID: 5174491427803820211}
+  - component: {fileID: 2290668853998028610}
   m_Layer: 6
   m_Name: BaseRobot
   m_TagString: Untagged
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_ReplenishableUI: {fileID: 8079024815260966539}
   m_Bot: {fileID: 6866213947906148498}
   m_Health: {fileID: 5320090538615944420}
+  m_PunchScaleFeedback: {fileID: 2290668853998028610}
   VisualTransform: {fileID: 9053405425316076160}
   deathParticlePrefab: {fileID: 7612327112066645472, guid: e39a1839f456646e7afb3e898c419247,
     type: 3}
@@ -330,6 +332,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &2290668853998028610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345055916182327661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9069a0534acf34dce83537bcedd77f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PunchVector: {x: 0.1, y: 0.1, z: 0.1}
+  m_Duration: 0.1
+  m_Vibrato: 10
+  m_Elasticity: 10
+  m_LoopCount: 0
 --- !u!1 &2881388121019475655
 GameObject:
   m_ObjectHideFlags: 0

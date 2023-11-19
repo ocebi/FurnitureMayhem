@@ -26,4 +26,4 @@ MonoBehaviour:
         type: 3}
     - Sprite: {fileID: 5524590292671962877, guid: f7043b7291f49844b9671b3d3dedcbb5,
         type: 3}
-  TargetHackAmount: 1
+  TargetHackAmount: 5
